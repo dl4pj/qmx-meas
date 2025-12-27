@@ -20,3 +20,8 @@ def set_rig_mode(mode):
     rig_model = 2057
     cmd = f"rigctl -m 2057 -r /dev/serial/by-id/usb-QRP_Labs_QMX_Transceiver-if00 -s 9600 M {mode.name} 3200"
     call(cmd, shell=True)
+
+def set_rig_pd(pd):
+    rig_model = 2057
+    cmd = f"rigctl -m {rig_model} -s 9600 -r /dev/serial/by-id/usb-QRP_Labs_QMX_Transceiver-if00 w MM3\\|13\\|0={pd.name};"
+    call(cmd, shell=True)
